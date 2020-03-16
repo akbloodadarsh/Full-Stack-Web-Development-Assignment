@@ -1,38 +1,33 @@
 var rand =  Math.floor(Math.random()*101);
+a = [];
 
-class all{
-	a = [];
-	new_element(num){
-		n = a.push(num);
-		document.getElementById('array') = "";
-		for(x in a)
-		{
-			document.getElementById('array') + = x;
-		}
-		if(num == rand)
-		{
-			win();
-		}
-		if(n == 10)
-		{
-			next_time();
-		}
-	}
+function next_time()
+{
+	alert("Maybe next time universe is gonna be with you");
+}
 
-	next_time()
+function win()
+{
+	alert("ok you win");
+}
+
+function exit()
+{
+	location.reload();
+}
+
+function new_element(){
+	num = document.getElementById('array');
+	n = a.push(num);
+	if(n == 10 || num == rand)
 	{
-		alert("Maybe next time universe is gonna be with you");
+		if(n == 10)next_time();
+		else win();
 		exit();
 	}
-
-	win()
+	for(x in a)
 	{
-		alert("ok");
-		exit();
-	}
-
-	exit()
-	{
-		location.reload();
+		console.log(document.getElementById('array'));
+		// document.getElementById('show') + x + ' ';	
 	}
 }
