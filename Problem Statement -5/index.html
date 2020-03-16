@@ -2,17 +2,12 @@
 <html>
 <head>
 	<title>GUESS ME!</title>
+	<script src="random.js"></script>
 </head>
-<script type="text/javascript">
-	num=1;
-	function change_it()
-	{
-		document.getElementById("change").innerHTML=num;
-		num++;
-	}
-</script>
 <body>
-	<h1 id="change">change me</h1>
-	<button type="button" onclick="change_it">change</button>
+	<button type="button" onclick="set_random()">start</button>
+	<button type="button" onclick="change_it()">change</button>
+	<h1 id="change">1</h1>
+	
 </body>
 </html>
