@@ -16,7 +16,10 @@ function new_element(){
 			}
 			exit();
 	}
+	document.getElementById('counter').innerHTML = "Guess left:- " + (10-n);
 	document.getElementById('show').innerHTML = "";
+	help1();
+	help2();
 	for(x in a)
 	{
 		document.getElementById('show').innerHTML += a[x];
@@ -25,7 +28,7 @@ function new_element(){
 }
 function next_time()
 {
-	alert("Maybe next time universe is gonna be with you");
+	alert("The random number was "+rand);
 }
 
 function win()
@@ -36,4 +39,28 @@ function win()
 function exit()
 {
 	location.reload();
+}
+
+function help1()
+{
+	if(rand%2==0)
+	{
+		document.getElementById('help1').innerHTML = "when random number is divided by 2 its remainder will be 0 and \n";	
+	}
+	else if(rand%3==0)
+	{
+		document.getElementById('help1').innerHTML = "when random number is divided by 2 its remainder will be 3 and \n";	
+	}
+}
+
+function help2()
+{
+	if(rand<50)
+	{
+		document.getElementById('help2').innerHTML = "maybe random number is equal or less than 50";	
+	}
+	else if(rand>50)
+	{
+		document.getElementById('help2').innerHTML = "maybe random number is equal or greater  than 50";	
+	}
 }
