@@ -1201,7 +1201,7 @@ var obj = [{
 
 function parse()
 {
-  var max_id=0,min_id=0,count=0,max_count=Number.MIN_VALUE,min_count=Number.MAX_VALUE;
+  var max_id=0,min_id=0,count=0,max_count=Number.MIN_VALUE,min_count=Number.MIN_VALUE;
   var max_counter=0,min_counter=0;
   var max_array = [],min_array = [],min_temp = [],max_temp = [];
   for(i=1;i<=10;++i)
@@ -1229,20 +1229,20 @@ function parse()
     if(max_counter>max_count)
     {
       max_array = max_temp;
-      max_count=counter;
+      max_count=max_counter;
       max_id=i;
     }
-    if(min_counter<min_count)
+    if(min_counter>min_count)
     {
       min_array = min_temp;
-      min_count=counter;
+      min_count=min_counter;
       min_id=i;
     }
   }
   document.getElementById('display').innerHTML = "Max ID:-" + max_id + "<br>";
-  document.getElementById('display').innerHTML = "Max Count:-" + max_count + "<br>";
-  document.getElementById('display').innerHTML = "All max Id :-" + max_array + "<br>";
-  document.getElementById('display').innerHTML = "Min ID:-" + min_id + "<br>";
-  document.getElementById('display').innerHTML = "Min Count:-" + min_count + "<br>";
-  document.getElementById('display').innerHTML = "All min Id :-" + min_array + "<br>";
+  document.getElementById('display').innerHTML += "Max Count:-" + max_count + "<br>";
+  document.getElementById('display').innerHTML += "All max Id :-" + max_array + "<br>";
+  document.getElementById('display').innerHTML += "Min ID:-" + min_id + "<br>";
+  document.getElementById('display').innerHTML += "Min Count:-" + min_count + "<br>";
+  document.getElementById('display').innerHTML += "All min Id :-" + min_array + "<br>";
 }
