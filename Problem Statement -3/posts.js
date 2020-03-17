@@ -610,6 +610,7 @@ function parse()
   }
   else
   {
+    document.getElementById('display').innerHTML = "";
     for(i=1;i<=10;++i)
     {
       for(x in obj)
@@ -619,11 +620,16 @@ function parse()
           str = obj[x]["body"];
           if(str.search(s) != -1)
           {
-            var occurence = str.split(s).length - 1;  
-            console.log(i + " " + obj[x]["id"] + " " + occurence);
+            var occurence = str.split(s).length - 1;
+            var temp = i + " " + obj[x]["id"] + " " + occurence + "<br>";
+            document.getElementById('display').innerHTML += temp; 
           }
         }
       }
     }
+  }
+  if(document.getElementById('display').innerHTML == "")
+  {
+    document.getElementById('display').innerHTML = "Element not found";
   }
 }
