@@ -3,7 +3,16 @@ body {
 }
 .block {
 }
-
+.question {
+	background-color: red;
+	border-radius: 50%;
+	margin: auto;
+	text-align: center;
+	font-size: 150px;
+	color: yellow;
+	width: 500px;
+	height: 500px;
+}
 .title {
 	background-color: yellow;
 	color: black;
