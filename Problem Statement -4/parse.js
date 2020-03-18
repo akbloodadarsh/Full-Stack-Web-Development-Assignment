@@ -27065,43 +27065,62 @@ var obj = [{
 	"status": "recommendation_found"
 }];
 
-obj = obj["0"];
-
 function parse()
 {		
-	for(j=0;j<=12;++j)
+	obj = obj["0"]["body"]["Recommendations"];
+	for(_ in obj)
 	{
-		for(_ in obj["body"]["Recommendations"])
+		//console.log("-->" + obj[_]["RestaurantName"]);
+		obj1 = obj[_]["menu"];
+		for(j1 in obj1)
 		{
-			for(i in obj["body"]["Recommendations"][j]["menu"])
+			if(obj1[j1]["type"] == "sectionheader")
 			{
-				for(k in obj["body"]["Recommendations"][j]["menu"]).length;++_)
+				obj2 = obj1[j1]["children"];
+				for(j2 in obj2)
 				{
-					if(obj["body"]["Recommendations"][j]["menu"][_]["type"] == "sectionheader")
+					if(obj2[j2]["type"] == "item")
 					{
-						for(_=0;_<=Object.keys(obj["body"]["Recommendations"][j]["menu"][_]["children"]["length"];++_)
+						if(obj2[j2]["selected"] == "1")
 						{
-							if(obj["body"]["Recommendations"][j]["menu"][_]["children"][_]["type"] == "item")
+							//console.log("---->" + obj2[j2]["name"]);
+							obj3 = obj2[j2]["children"];
+							for(j3 in obj3)
 							{
-								if(obj["body"]["Recommendations"][j]["menu"][_]["children"][_]["selected"] == 1)
-								{
-									console.log(obj["body"]["Recommendations"][j]["menu"][_]["children"][_]["name"]);
-									console.log(parseInt(obj["body"]["Recommendations"][j]["menu"][_]["children"][_]["children"]["length"]));
-								}
+									if(typeof rec_obj === 'undefined' || typeof rec_j === 'undefined')
+									{
+										continue;
+									}
+									deep(obj3,j3);
 							}
-						}	
+							
+						}
 					}
-				}		
+				}
 			}
 		}
 	}
 }
 
-function infinity(i)
+function deep(rec_obj,rec_j)
 {
-	if(i["selected"] == 1)
+	if(typeof rec_obj === 'undefined' || typeof rec_j === 'undefined')
 	{
-		console.log(i["name"])
-		infinity(i["children"]);
-	}	
+		return;
+	}
+	console.log(rec_obj);
+	console.log(rec_obj[rec_j]);
+	if(rec_obj[rec_j]["selected"] == "1")
+	{
+		//console.log("-------->" + rec_obj[rec_j]["name"]);
+		rec_obj1 = rec_obj[rec_j]["children"];
+		for(rec_j1 in rec_obj1)
+		{
+			if(typeof rec_obj === 'undefined' || typeof rec_j === 'undefined')
+			{
+				continue;
+			}
+			deep(rec_obj1,rec_j1);	
+		}
+	}
 }
