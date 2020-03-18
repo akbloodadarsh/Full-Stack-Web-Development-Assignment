@@ -27065,10 +27065,43 @@ var obj = [{
 	"status": "recommendation_found"
 }];
 
+obj = obj["0"];
+
 function parse()
 {		
-	for(x in obj)
+	for(j=0;j<=12;++j)
 	{
-		console.log(x["api_version"]);
+		for(_ in obj["body"]["Recommendations"])
+		{
+			for(i in obj["body"]["Recommendations"][j]["menu"])
+			{
+				for(k in obj["body"]["Recommendations"][j]["menu"]).length;++_)
+				{
+					if(obj["body"]["Recommendations"][j]["menu"][_]["type"] == "sectionheader")
+					{
+						for(_=0;_<=Object.keys(obj["body"]["Recommendations"][j]["menu"][_]["children"]["length"];++_)
+						{
+							if(obj["body"]["Recommendations"][j]["menu"][_]["children"][_]["type"] == "item")
+							{
+								if(obj["body"]["Recommendations"][j]["menu"][_]["children"][_]["selected"] == 1)
+								{
+									console.log(obj["body"]["Recommendations"][j]["menu"][_]["children"][_]["name"]);
+									console.log(parseInt(obj["body"]["Recommendations"][j]["menu"][_]["children"][_]["children"]["length"]));
+								}
+							}
+						}	
+					}
+				}		
+			}
+		}
+	}
+}
+
+function infinity(i)
+{
+	if(i["selected"] == 1)
+	{
+		console.log(i["name"])
+		infinity(i["children"]);
 	}	
 }
