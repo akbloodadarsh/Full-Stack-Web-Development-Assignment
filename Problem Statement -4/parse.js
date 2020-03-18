@@ -27070,7 +27070,7 @@ function parse()
 	obj = obj["0"]["body"]["Recommendations"];
 	for(_ in obj)
 	{
-		//console.log("-->" + obj[_]["RestaurantName"]);
+		console.log("-->" + obj[_]["RestaurantName"]);
 		obj1 = obj[_]["menu"];
 		for(j1 in obj1)
 		{
@@ -27083,17 +27083,12 @@ function parse()
 					{
 						if(obj2[j2]["selected"] == "1")
 						{
-							//console.log("---->" + obj2[j2]["name"]);
+							console.log("---->" + obj2[j2]["name"]);
 							obj3 = obj2[j2]["children"];
 							for(j3 in obj3)
 							{
-									if(typeof rec_obj === 'undefined' || typeof rec_j === 'undefined')
-									{
-										continue;
-									}
-									deep(obj3,j3);
+								deep(obj3,j3);
 							}
-							
 						}
 					}
 				}
@@ -27108,19 +27103,16 @@ function deep(rec_obj,rec_j)
 	{
 		return;
 	}
-	console.log(rec_obj);
-	console.log(rec_obj[rec_j]);
-	if(rec_obj[rec_j]["selected"] == "1")
+	if(typeof rec_obj[rec_j] !== 'undefined' && rec_obj[rec_j]["selected"] == "1")
 	{
-		//console.log("-------->" + rec_obj[rec_j]["name"]);
+		console.log("-------->" + rec_obj[rec_j]["name"]);
 		rec_obj1 = rec_obj[rec_j]["children"];
 		for(rec_j1 in rec_obj1)
 		{
-			if(typeof rec_obj === 'undefined' || typeof rec_j === 'undefined')
-			{
-				continue;
-			}
 			deep(rec_obj1,rec_j1);	
 		}
+	}else
+	{
+		return;
 	}
 }
