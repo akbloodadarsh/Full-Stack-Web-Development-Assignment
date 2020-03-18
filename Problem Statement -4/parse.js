@@ -27064,13 +27064,12 @@ var obj = [{
 	},
 	"status": "recommendation_found"
 }];
-
 function parse()
 {		
 	obj = obj["0"]["body"]["Recommendations"];
 	for(_ in obj)
 	{
-		console.log("-->" + obj[_]["RestaurantName"]);
+		document.getElementById('display').innerHTML += "-->" + obj[_]["RestaurantName"] + "<br>";
 		obj1 = obj[_]["menu"];
 		for(j1 in obj1)
 		{
@@ -27083,7 +27082,7 @@ function parse()
 					{
 						if(obj2[j2]["selected"] == "1")
 						{
-							console.log("---->" + obj2[j2]["name"]);
+							document.getElementById('display').innerHTML += "---->" + obj2[j2]["name"] + "<br>";
 							obj3 = obj2[j2]["children"];
 							for(j3 in obj3)
 							{
@@ -27105,7 +27104,7 @@ function deep(rec_obj,rec_j)
 	}
 	if(typeof rec_obj[rec_j] !== 'undefined' && rec_obj[rec_j]["selected"] == "1")
 	{
-		console.log("-------->" + rec_obj[rec_j]["name"]);
+		document.getElementById('display').innerHTML += "-------->" + rec_obj[rec_j]["name"] + "<br>";
 		rec_obj1 = rec_obj[rec_j]["children"];
 		for(rec_j1 in rec_obj1)
 		{
